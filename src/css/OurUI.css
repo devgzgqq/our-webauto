@@ -1,0 +1,13 @@
+/*! webprojec - v0.0.1 - 2016-01-27 */
+.body {
+	color: red;
+}
+body {
+	background: url("../images/sprite/01.png");
+}
+.sdiv {
+	background: url("../images/sprite/02.png");
+}
+.prefixer {
+	border-radius: 4px;
+}
