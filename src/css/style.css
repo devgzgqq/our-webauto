@@ -1,8 +1,9 @@
-body {
-	background: url("../images/sprite/01.png");
-}
+
 .sdiv {
 	background: url("../images/sprite/02.png");
+}
+.vdiv {
+  background: url("../images/sprite/01.png");
 }
 .prefixer {
 	border-radius: 4px;
