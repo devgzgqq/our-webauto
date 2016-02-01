@@ -1,19 +1,32 @@
-/*! webprojec - v0.0.1 - 2016-01-27 */
-.body {
-	color: red;
-}
+/*! webprojec - v0.0.1 - 2016-02-01 */
 body {
-	background-position: 0 -271px;
+  margin: 0;
+  padding: 0;
 }
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #fefefe;
+  padding: 10px;
+}
+
+.container p {
+  color: #999999;
+}
+
+
 .sdiv {
 	background-position: 0 0;
+}
+.vdiv {
+  background-position: 0 -271px;
 }
 .prefixer {
 	border-radius: 4px;
 }
 
 /* ../images/OurUI.png */
-body,
-.sdiv{
+.sdiv,
+.vdiv{
 background-image: url(../images/OurUI.png);
 }

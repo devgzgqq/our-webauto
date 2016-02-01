@@ -30,8 +30,7 @@ module.exports = function(grunt) {
                 cwd: 'src/page/',
                 src: '**',
                 dest: 'build/',
-                flatten: false,
-                filter: 'isFile',
+                // filter: 'isFile',
             },
             copyLib: {
                 expand: true,
@@ -53,7 +52,7 @@ module.exports = function(grunt) {
                 imagepath: 'src/images/sprite/',
                 imagepath_map: null,
                 spritedest: 'build/images/',
-                spritepath: '../images',
+                spritepath: '../images/',
                 padding: 2,
                 useimageset: false,
                 newsprite: false,
@@ -105,18 +104,57 @@ module.exports = function(grunt) {
             }
         },
 
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src: [
+                        'build/css/*.css',
+                        'build/js/*.js',
+                        'build/*.html'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    server: './build'
+                }
+            }
+        },
+
+        // 压缩HTML
+        htmlmin: {
+            options: {
+                removeComments: true,
+                removeCommentsFromCDATA: true,
+                collapseWhitespace: true,
+                collapseBooleanAttributes: true,
+                removeAttributeQuotes: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeOptionalTags: true
+            },
+            html: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/page',
+                    src: ['*.html'],
+                    dest: 'build/'
+                }]
+            }
+        },
+
         watch: {
             script: {
                 files: 'src/js/*',
                 tasks: ['concat', 'uglify', 'copy:copyLib']
             },
             html: {
-                files: 'page/*',
-                tasks: ['copy:copyHtml']
+                files: 'src/page/*',
+                tasks: ['htmlmin','copy:copyHtml']
             },
             css: {
                 files: 'src/css/*',
-                tasks: ['concat', 'sprite','cssmin']
+                tasks: ['concat', 'sprite', 'cssmin']
             },
             img: {
                 files: 'src/images/*',
@@ -132,10 +170,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
     // 默认执行的任务
     grunt.registerTask('default', ['concat', 'sprite', 'copy', 'cssmin', 'uglify']);
 
-    grunt.registerTask('watch', ['watch']);
+    grunt.registerTask('serve', ['browserSync', 'watch']);
 
 };
