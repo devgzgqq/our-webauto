@@ -26,6 +26,7 @@ our-webauto
 |-- src         # 开发文件
    |-- css         # 存放css文件
    |-- images      # 存放图片文件
+       |-- sprite     # 原始图标文件
    |-- page        # 存放页面文件
    |-- js          # 存放脚本文件
 
