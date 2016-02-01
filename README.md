@@ -23,3 +23,26 @@ our-webauto
 |-- widget      # Web 组件
 
 ```
+
+### 使用说明
+
+全局安装
+```
+npm install -g grunt-cli
+```
+
+克隆到本地
+```
+git clone https://github.com/gzgqq/our-webauto/our-webauto.git
+```
+然后进入目录安装依赖：
+
+```
+npm install
+```
+
+接下来，执行 `grunt`：
+
+```
+grunt serve
+```
